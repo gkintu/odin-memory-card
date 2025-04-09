@@ -32,7 +32,7 @@ function App() {
       try {
         // 1. Fetch a list of 12 Pokemon
         const response = await fetch(
-            `https://pokeapi.co/api/v2/pokemon?limit=${numberOfPokemon}`
+          "https://pokeapi.co/api/v2/pokemon?limit=12"
         ); // Fetch first 12 pokemon list
         if (!response.ok) {
           // Check if fetch was successful

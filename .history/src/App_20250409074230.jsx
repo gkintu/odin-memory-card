@@ -32,7 +32,7 @@ function App() {
       try {
         // 1. Fetch a list of 12 Pokemon
         const response = await fetch(
-            `https://pokeapi.co/api/v2/pokemon?limit=${numberOfPokemon}`
+          "https://pokeapi.co/api/v2/pokemon?limit=12"
         ); // Fetch first 12 pokemon list
         if (!response.ok) {
           // Check if fetch was successful
@@ -70,7 +70,7 @@ function App() {
     };
 
     fetchPokemon(); // Call the fetch function
-  }, [numberOfPokemon]); // Empty dependency array [] means this effect runs only once when the component mounts
+  }, []); // Empty dependency array [] means this effect runs only once when the component mounts
 
   // Placeholder click handler (we'll implement full logic next)
   const handleCardClick = (pokemonId) => {
