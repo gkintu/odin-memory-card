@@ -81,7 +81,7 @@ h1 {
 
 @media (max-width: 600px) {
   .card-grid {
-    grid-template-columns: repeat(3, 1fr); /* 3 columns for smaller screens */
+    grid-template-columns: repeat(150px, 1fr); /* 3 columns for smaller screens */
   }
    .scoreboard {
      flex-direction: column; /* Stack score elements vertically on small screens */

@@ -5,11 +5,6 @@ body {
   background-color: #f0f0f0; /* Light grey background */
 }
 
-h1 {
-  color: #333; /* Darker heading color */
-  margin-bottom: 20px;
-}
-
 .App {
   max-width: 900px; /* Max width for the game area */
   margin: 0 auto; /* Center the app */
