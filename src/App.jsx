@@ -69,10 +69,45 @@ function App() {
 
   // Placeholder click handler (we'll implement full logic next)
   const handleCardClick = (pokemonId) => {
-    console.log(`Card clicked: ${pokemonId}`);
-     // For now, just shuffle the current list on any click
-     setPokemonList(prevList => shuffleArray(prevList));
-    // Actual game logic will be added here in the next step...
+    // Check if the clicked Pokemon ID is already in the clickedPokemonIds array
+    if (clickedPokemonIds.includes(pokemonId)) {
+      // --- GAME OVER LOGIC ---
+      console.log("Game Over! Clicked the same Pokemon twice.");
+
+      // 1. Update bestScore if currentScore is higher
+      if (currentScore > bestScore) {
+        setBestScore(currentScore); // Set new best score
+      }
+
+      // 2. Reset currentScore to 0
+      setCurrentScore(0); // Reset current score
+
+      // 3. Clear the list of clicked Pokemon IDs for the new round
+      setClickedPokemonIds([]); // Reset clicked IDs
+
+      // 4. Shuffle cards for the new game (optional, could just reset score)
+      //    We shuffle regardless below, so this line is technically redundant here
+      //    but good for clarity of resetting the round.
+
+    } else {
+      // --- CORRECT GUESS LOGIC ---
+      console.log("Correct guess!");
+
+      // 1. Increment currentScore
+      const newScore = currentScore + 1;
+      setCurrentScore(newScore); // Update score state
+
+      // 2. Add the clicked Pokemon ID to the list of clicked IDs
+      setClickedPokemonIds(prevClickedIds => [...prevClickedIds, pokemonId]); // Add new ID to the array
+
+      // 3. Check if this score is now higher than bestScore (update bestScore live)
+       if (newScore > bestScore) {
+         setBestScore(newScore);
+       }
+    }
+
+    // --- ALWAYS SHUFFLE CARDS AFTER EVERY CLICK ---
+    setPokemonList(prevList => shuffleArray(prevList)); // Shuffle the list for the next turn
   };
 
   // Render loading or error state if necessary
